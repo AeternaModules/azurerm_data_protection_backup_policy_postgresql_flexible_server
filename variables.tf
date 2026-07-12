@@ -31,12 +31,12 @@ EOT
     vault_id                        = string
     time_zone                       = optional(string)
     default_retention_rule = object({
-      life_cycle = object({
+      life_cycle = list(object({
         data_store_type = string
         duration        = string
-      })
+      }))
     })
-    retention_rule = optional(object({
+    retention_rule = optional(list(object({
       criteria = object({
         absolute_criteria      = optional(string)
         days_of_week           = optional(set(string))
@@ -44,13 +44,13 @@ EOT
         scheduled_backup_times = optional(set(string))
         weeks_of_month         = optional(set(string))
       })
-      life_cycle = object({
+      life_cycle = list(object({
         data_store_type = string
         duration        = string
-      })
+      }))
       name     = string
       priority = number
-    }))
+    })))
   }))
 }
 
