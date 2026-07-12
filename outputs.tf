@@ -1,3 +1,7 @@
+output "data_protection_backup_policy_postgresql_flexible_servers_id" {
+  description = "Map of id values across all data_protection_backup_policy_postgresql_flexible_servers, keyed the same as var.data_protection_backup_policy_postgresql_flexible_servers"
+  value       = { for k, v in azurerm_data_protection_backup_policy_postgresql_flexible_server.data_protection_backup_policy_postgresql_flexible_servers : k => v.id }
+}
 output "data_protection_backup_policy_postgresql_flexible_servers_backup_repeating_time_intervals" {
   description = "Map of backup_repeating_time_intervals values across all data_protection_backup_policy_postgresql_flexible_servers, keyed the same as var.data_protection_backup_policy_postgresql_flexible_servers"
   value       = { for k, v in azurerm_data_protection_backup_policy_postgresql_flexible_server.data_protection_backup_policy_postgresql_flexible_servers : k => v.backup_repeating_time_intervals }
