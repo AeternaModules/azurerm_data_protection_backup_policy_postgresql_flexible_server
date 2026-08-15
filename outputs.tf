@@ -8,7 +8,7 @@ output "data_protection_backup_policy_postgresql_flexible_servers_backup_repeati
 }
 output "data_protection_backup_policy_postgresql_flexible_servers_default_retention_rule" {
   description = "Map of default_retention_rule values across all data_protection_backup_policy_postgresql_flexible_servers, keyed the same as var.data_protection_backup_policy_postgresql_flexible_servers"
-  value       = { for k, v in azurerm_data_protection_backup_policy_postgresql_flexible_server.data_protection_backup_policy_postgresql_flexible_servers : k => v.default_retention_rule if v.default_retention_rule != null && length(v.default_retention_rule) > 0 }
+  value       = { for k, v in azurerm_data_protection_backup_policy_postgresql_flexible_server.data_protection_backup_policy_postgresql_flexible_servers : k => one(v.default_retention_rule) if v.default_retention_rule != null && length(v.default_retention_rule) > 0 }
 }
 output "data_protection_backup_policy_postgresql_flexible_servers_name" {
   description = "Map of name values across all data_protection_backup_policy_postgresql_flexible_servers, keyed the same as var.data_protection_backup_policy_postgresql_flexible_servers"
